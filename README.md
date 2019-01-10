@@ -52,7 +52,7 @@ You can always go back and change these in the `package.json` file that's been g
 Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
+npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler vue-property-decorator style-loader
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
