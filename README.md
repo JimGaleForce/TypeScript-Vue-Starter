@@ -52,7 +52,7 @@ You can always go back and change these in the `package.json` file that's been g
 Ensure TypeScript, Webpack, Vue and the necessary loaders are installed.
 
 ```sh
-npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler
+npm install --save-dev typescript webpack ts-loader css-loader vue vue-loader vue-template-compiler vue-property-decorator style-loader
 ```
 
 Webpack is a tool that will bundle your code and optionally all of its dependencies into a single `.js` file.
@@ -97,6 +97,8 @@ We'll need to add a `webpack.config.js` to bundle our app.
 var path = require('path')
 var webpack = require('webpack')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   entry: './src/index.ts',
   output: {
@@ -106,6 +108,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,  
+        exclude: /node_modules/,  
+        loaders: ['style-loader', 'css-loader'],
+      },      
       {
         test: /\.vue$/,
         loader: 'vue-loader',
