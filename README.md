@@ -97,6 +97,8 @@ We'll need to add a `webpack.config.js` to bundle our app.
 var path = require('path')
 var webpack = require('webpack')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   entry: './src/index.ts',
   output: {
@@ -106,6 +108,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.css$/,  
+        exclude: /node_modules/,  
+        loaders: ['style-loader', 'css-loader'],
+      },      
       {
         test: /\.vue$/,
         loader: 'vue-loader',
